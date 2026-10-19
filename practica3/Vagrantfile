@@ -1,0 +1,17 @@
+Vagrant.configure("2") do |config|
+  # Imagen oficial de Ubuntu Server LTS
+  config.vm.box = "ubuntu/focal64"
+
+  # Configurar red pública en modo puente (Bridged) para acceso por SSH y Servidor Web
+  config.vm.network "public_network"
+
+  # Disco secundario de 2 GB para el Bloque 6 (Sistemas de archivos y fstab)
+  config.vm.disk :disk, name: "disco_secundario", size: "2GB"
+
+  # Configuración del proveedor VirtualBox
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+    vb.name = "VM_Practica3_ASI"
+  end
+end
